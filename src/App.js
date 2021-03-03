@@ -10,9 +10,9 @@ import context, {initialState} from './context'
 
 function App() {
 
-  const setState = () => {}
-  const state = initialState
-  const {weather, loading, text, error} = state
+  const ctx = useContext(context)
+  const {state, setState} = ctx
+  const {weather, loading, error, text} = state
 
   async function getWeather(e) {
     // this line prevents the page from reloading (which is the default for <form> elements)
@@ -20,7 +20,7 @@ function App() {
     // set "loading" to true in the state so we can show a spinner
     setState({loading: true, weather:null})
     // here is our giphy api key
-    var key = ''
+    var key = '404b2a8c808e059e02639a871879b4bd'
     // this line make a URL string, I got this from their documentation
     var url = `http://api.openweathermap.org/data/2.5/forecast?q=${state.text}&units=imperial&appid=${key}`
     // "fetch" calls the giphy API!
@@ -89,8 +89,17 @@ function App() {
         />}
         {error && <div style={{color:'rgb(150,80,50)'}}>{error}</div>}
       </main>
+
+      <Another />
     </div>
   );
+}
+
+function Another() {
+  const ctx = useContext(context)
+  return <h1 onClick={()=>ctx.setState({text:'I clicked!'})}>
+    {ctx.state.text}
+  </h1>
 }
 
 export default App;
