@@ -10,4 +10,5 @@ export const initialState = {
     loading:false,
     error:'',
     text:'Portland',
+    page:'forecast'
 }
