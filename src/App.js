@@ -9,7 +9,7 @@ import {Bar} from 'react-chartjs-2'
 import context, {initialState} from './context'
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Link, Redirect } from "react-router-dom";
 
 function App() {
 
@@ -22,13 +22,10 @@ function App() {
     e.preventDefault()
     // set "loading" to true in the state so we can show a spinner
     setState({loading: true, weather:null})
-    // here is our giphy api key
-    var key = '404b2a8c808e059e02639a871879b4bd'
-    // this line make a URL string, I got this from their documentation
-    var url = `http://api.openweathermap.org/data/2.5/${state.page}?q=${state.text}&units=imperial&appid=${key}`
-    // "fetch" calls the giphy API!
+
+    const url = `/api/weather?page=${state.page}&text=${state.text}`
+    console.log(url)
     var r = await fetch(url)
-    // this lines extracts JSON (javascript object notation)
     var json = await r.json()
 
     console.log("JSON", json)
@@ -89,7 +86,10 @@ function App() {
       </Tabs>
 
       <Switch>
-        <Route path="/forecast" exact>
+        <Route exact path="/">
+          <Redirect to="/forecast" />
+        </Route>
+        <Route path="/forecast">
           <Forecast />
         </Route>
         <Route path="/current" exact>

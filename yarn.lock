@@ -6596,6 +6596,11 @@
   dependencies:
     "lower-case" "^1.1.1"
 
+"node-fetch@^2.6.1":
+  "integrity" "sha512-V4aYg89jEoVRxRb2fJdAg8FHvI7cEyYdVAh94HH0UIK8oJxUfkjlDQN9RbMx+bEjP7+ggMiFRprSti032Oipxw=="
+  "resolved" "https://registry.npmjs.org/node-fetch/-/node-fetch-2.6.1.tgz"
+  "version" "2.6.1"
+
 "node-forge@0.7.5":
   "integrity" "sha512-MmbQJ2MTESTjt3Gi/3yG1wGpIMhUfcIypUCGtTizFR9IiccFwxSpfp0vtIZlkFclEqERemxfnSdZEMR9VqqEFQ=="
   "resolved" "https://registry.npmjs.org/node-forge/-/node-forge-0.7.5.tgz"
